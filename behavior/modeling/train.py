@@ -25,7 +25,6 @@ from sklearn.metrics import (
 from behavior import (
     BASE_TARGET_COLS,
     BENCHDB_TO_TABLES,
-    BASE_TARGET_COLS,
     PLAN_NODE_NAMES,
 )
 from behavior.modeling.model import BehaviorModel
@@ -147,7 +146,7 @@ def load_data(data_dir):
     result_paths: list[Path] = [fp for fp in data_dir.glob("*.csv") if os.stat(fp).st_size > 0]
     ou_name_to_df: dict[str, DataFrame] = {}
 
-    for ou_name in PLAN_NODE_NAMES:
+    for ou_name in ['do_autovacuum', ]:
         ou_results = [fp for fp in result_paths if fp.name.startswith(ou_name)]
         if len(ou_results) > 0:
             logger.debug("Found %s run(s) for %s", len(ou_results), ou_name)
