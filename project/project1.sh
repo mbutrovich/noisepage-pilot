@@ -67,8 +67,9 @@ _setup_benchmark() {
   xmlstarlet edit --inplace --update '/parameters/username' --value "${DB_USER}" ./artifacts/project/${benchmark}_config.xml
   xmlstarlet edit --inplace --update '/parameters/password' --value "${DB_PASS}" ./artifacts/project/${benchmark}_config.xml
   xmlstarlet edit --inplace --update '/parameters/scalefactor' --value "1" ./artifacts/project/${benchmark}_config.xml
-  xmlstarlet edit --inplace --update '/parameters/works/work/time' --value "30" ./artifacts/project/${benchmark}_config.xml
+  xmlstarlet edit --inplace --update '/parameters/works/work/time' --value "30" ./artifacts/project/${benchmark}_config.xml # TODO(Matt): make it 5min
   xmlstarlet edit --inplace --update '/parameters/works/work/rate' --value "unlimited" ./artifacts/project/${benchmark}_config.xml
+  xmlstarlet edit --inplace --update '/parameters/isolation' --value "TRANSACTION_READ_COMMITTED" ./artifacts/project/${benchmark}_config.xml
 
   # Load the benchmark into the project database.
   doit --verbosity ${VERBOSITY} benchbase_run --benchmark="${benchmark}" --config="./artifacts/project/${benchmark}_config.xml" --args="--create=true --load=true"
