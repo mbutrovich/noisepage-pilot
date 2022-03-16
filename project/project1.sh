@@ -15,6 +15,8 @@ STUDENTS=(
   'https://github.com/mkpjnx/15799-index-picker.git,peijingx'
   'https://github.com/17zhangw/S22-15799-p1.git,wz2'
   'https://github.com/karthik-ramanathan-3006/15-799-Special-Topics-in-Database-Systems.git,kramana2'
+  'https://github.com/Neville11/15799-auto-tuner.git,cchima'
+  'https://github.com/amstqq/S22-15799.git,jiaqidon'
 )
 
 # TODO(Matt): Update benchmark list with workloads.
