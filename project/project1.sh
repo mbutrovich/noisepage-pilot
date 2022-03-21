@@ -40,11 +40,11 @@ export DB_NAME="project1db"
 
 # TODO(Matt): Finalize these timeouts.
 # TA: Total time that the grading script can run per (student, benchmark).
-export TIME_GRADING_TOTAL="45m"
+export TIME_GRADING_TOTAL="10m"
 # TA: Maximum time allowed for student setup.
 export TIME_SETUP="10m"
 # Student: Maximum time allowed per (student, benchmark, action generation).
-export TIME_ACTION_GENERATION="15m"
+export TIME_ACTION_GENERATION="5m"
 
 # Setup the database using the global constants.
 _setup_database() {
@@ -66,7 +66,7 @@ _setup_benchmark() {
   xmlstarlet edit --inplace --update '/parameters/username' --value "${DB_USER}" ./artifacts/project/${benchmark}_config.xml
   xmlstarlet edit --inplace --update '/parameters/password' --value "${DB_PASS}" ./artifacts/project/${benchmark}_config.xml
   xmlstarlet edit --inplace --update '/parameters/scalefactor' --value "1" ./artifacts/project/${benchmark}_config.xml
-  xmlstarlet edit --inplace --update '/parameters/works/work/time' --value "300" ./artifacts/project/${benchmark}_config.xml
+  xmlstarlet edit --inplace --update '/parameters/works/work/time' --value "30" ./artifacts/project/${benchmark}_config.xml
   xmlstarlet edit --inplace --update '/parameters/works/work/rate' --value "unlimited" ./artifacts/project/${benchmark}_config.xml
   xmlstarlet edit --inplace --update '/parameters/isolation' --value "TRANSACTION_READ_COMMITTED" ./artifacts/project/${benchmark}_config.xml
 
