@@ -82,7 +82,7 @@ _dump_database() {
 
   # Dump the project database into directory format.
   rm -rf "./${dump_path}"
-  PGPASSWORD=$DB_PASS pg_dump --host=localhost --username=$DB_USER --format=directory --file=./${dump_path} $DB_NAME
+  PGPASSWORD=$DB_PASS pg_dump --host=localhost --username=$DB_USER --format=directory --jobs=10 --file=./${dump_path} $DB_NAME
 
   echo "Dumped database to: ${dump_path}"
 }
@@ -91,7 +91,7 @@ _restore_database() {
   dump_path="${1}"
 
   # Restore the project database from directory format.
-  PGPASSWORD=${DB_PASS} pg_restore --host=localhost --username=$DB_USER --clean --if-exists --dbname=${DB_NAME} ./${dump_path}
+  PGPASSWORD=${DB_PASS} pg_restore --host=localhost --username=$DB_USER --clean --if-exists --dbname=${DB_NAME} --jobs=10 ./${dump_path}
 
   echo "Restored database from: ${dump_path}"
 }
