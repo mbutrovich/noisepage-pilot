@@ -61,6 +61,9 @@ _setup_benchmark() {
 
   # Modify the BenchBase benchmark configuration.
   mkdir -p artifacts/project/
+  if [ "$benchmark" == "timeseries" ]; then
+      cp ./artifacts/benchbase/config/postgres/sample_timeseries_config.xml ./config/behavior/benchbase/timeseries_config.xml
+  fi
   cp ./config/behavior/benchbase/${benchmark}_config.xml ./artifacts/project/${benchmark}_config.xml
   xmlstarlet edit --inplace --update '/parameters/url' --value "jdbc:postgresql://localhost:5432/${DB_NAME}?preferQueryMode=simple" ./artifacts/project/${benchmark}_config.xml
   xmlstarlet edit --inplace --update '/parameters/username' --value "${DB_USER}" ./artifacts/project/${benchmark}_config.xml
